@@ -5,10 +5,10 @@ import cors from "cors"
 const app = express()
 
 app.use(cors({
-    credentials:false,
-    origin:"*"
-}))
-
+  origin: 'https://gpcnotes.netlify.app', // Replace with your Netlify URL
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true
+}));
 
 app.use(express.json({limit:"30mb"}))
 app.use(express.urlencoded({extended:true,limit:"30mb"}))
