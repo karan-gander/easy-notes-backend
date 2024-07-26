@@ -34,7 +34,7 @@ const userLogin = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true, // Prevent client-side JavaScript access
     secure: true, // Set only for HTTPS connections (if applicable)
-    // sameSite: "", // Allow sending with top-level navigations
+    // sameSite: "sameSit", // Allow sending with top-level navigations
   };
   return res
     .status(200)
