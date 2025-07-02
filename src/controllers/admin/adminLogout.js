@@ -12,11 +12,13 @@ export const adminLogout = asyncHandler(async (req,res)=>{
     //     new:true
     // })
 
-    return res
+   req.session.destroy(()=>{
+     return res
     .status(200)
-    .clearCookie("adminAccessToken")
+    .clearCookie("connect.sid")
     
     .json( new ApiResponse(200,{},"User logged out"))
+   })
 
 
 })

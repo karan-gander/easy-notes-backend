@@ -6,13 +6,14 @@ import { notesUpload } from "../controllers/admin/notesUpload.js";
 import { paperUpload } from "../controllers/admin/oldpapers.js";
 import {verifyJWT} from "../controllers/admin/middleware/auth.js"
 import { upload } from "../middleware/multer.js";
+import { protectedRoute } from "../controllers/admin/middleware/adminauth.js";
 const router = Router()
 
 
-
+router.route("/me").get(protectedRoute);
 router.route("/register").post(adminsignUp)
 router.route("/login").post(adminLogin)
 router.route("/logout").post(adminLogout)
-router.route("/upload-notes").post(verifyJWT,upload.single("notes"),notesUpload)
-router.route("/upload-oldpapers").post(verifyJWT,upload.single("paper"),paperUpload)
+router.route("/upload-notes").post(upload.single("notes"),notesUpload)
+router.route("/upload-oldpapers").post(upload.single("paper"),paperUpload)
 export default router

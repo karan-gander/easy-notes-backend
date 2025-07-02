@@ -32,16 +32,20 @@ const userLogin = asyncHandler(async (req, res) => {
     "-password -refreshToken"
   );
   const options = {
-    httpOnly: true, // Prevent client-side JavaScript access
-    secure: true, // Set only for HTTPS connections (if applicable)
+    httpOnly: false, // Prevent client-side JavaScript access
+    secure: false, // Set only for HTTPS connections (if applicable)
     // sameSite: "sameSit", // Allow sending with top-level navigations
   };
   return res
     .status(200)
-    .cookie("accessToken", accessToken)
+    .cookie("accessToken", accessToken, {
+      httpOnly: false, // prevents JavaScript from accessing the cookie
+      secure: true, // ensures the cookie is sent over HTTPS
+      maxAge: 3600000, // sets the cookie expiry (in ms)
+    })
     .json(
       new ApiResponse(
-        200,
+        200,  
         { loggedInUser, accessToken, refreshToken },
         "user is logged in successfully"
       )

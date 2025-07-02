@@ -20,15 +20,18 @@ router.route("/login").post(userLogin)
 
 
 //  auth routres
-router.route("/logout").post(verifyJWT,logout)
-router.route("/refresh-token").post(refreshAccessToken)
-router.route("/change-password").post(verifyJWT,changePassword)
-router.route("/currunt-user").post(verifyJWT,getCurruntUser)
-router.route("/update-account").post(verifyJWT,updateUserDetails)
-router.route("/user-details").patch(verifyJWT,getCurruntUser)
 
-router.route("/notes-download").post(verifyJWT,notesDownload)
-router.route("/papers-download").post(verifyJWT,papersDownload)
+//  middlware curruntly not set for testing purpose                                     
+
+router.route("/logout").post(logout)
+router.route("/refresh-token").post(refreshAccessToken)
+router.route("/change-password").post(changePassword)
+router.route("/currunt-user").post(getCurruntUser)
+router.route("/update-account").post(updateUserDetails)
+router.route("/user-details").patch(getCurruntUser)
+
+router.route("/notes-download").post(notesDownload)
+router.route("/papers-download").post(papersDownload)
 
 //  notes and old papers routes
 //  jwt add karana hai after testig in both routes
