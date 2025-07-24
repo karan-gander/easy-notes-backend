@@ -15,7 +15,7 @@ export const adminLogout = asyncHandler(async (req,res)=>{
    req.session.destroy(()=>{
      return res
     .status(200)
-    .clearCookie("connect.sid")
+    .clearCookie("admin-token")
     
     .json( new ApiResponse(200,{},"User logged out"))
    })

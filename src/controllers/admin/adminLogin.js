@@ -24,6 +24,8 @@ export const adminLogin = asyncHandler(async (req, res) => {
     if (!isPasswordCorrect) {
         throw new ApiError(401, "incrroct password")
     }
+
+    const {adminAccessToken} =  await generateAdminAccesToken(admin._id)
     // req.session.adminId = admin._id;
     
 
@@ -31,5 +33,5 @@ export const adminLogin = asyncHandler(async (req, res) => {
     // console.log(req.session.adminId,"OKKK--")
 
 
-    res.status(200).json(new ApiResponse(200, { admin }, "admin is logged in successfully"))
+    res.status(200).cookie("adminAccessToken",adminAccessToken).json(new ApiResponse(200, { admin }, "admin is logged in successfully"))
 })
