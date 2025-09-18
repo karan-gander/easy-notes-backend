@@ -30,8 +30,8 @@ router.route("/currunt-user").post(getCurruntUser)
 router.route("/update-account").post(updateUserDetails)
 router.route("/user-details").patch(getCurruntUser)
 
-router.route("/notes-download").post(notesDownload)
-router.route("/papers-download").post(papersDownload)
+router.route("/notes-download").post(verifyJWT,notesDownload)
+router.route("/papers-download").post(verifyJWT,papersDownload)
 
 //  notes and old papers routes
 //  jwt add karana hai after testig in both routes

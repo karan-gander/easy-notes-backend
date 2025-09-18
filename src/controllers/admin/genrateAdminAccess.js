@@ -5,11 +5,7 @@ const generateAdminAccesToken = async (adminId) => {
     const admin = await Admin.findById(adminId);
     // console.log("in User",user)
     const adminAccessToken = await admin.generateAccessToken();
-    // console.log("aa ---",adminAccessToken)
-    // const refreshToken = await user.generateRefreshToken();
-    // console.log("refresh Token ,",refreshToken)
-    // user.refreshToken = refreshToken;
-//    await  admin.save({validateBeforeSave:false})
+   
     return { adminAccessToken };
   } catch (error) {
     throw new ApiError(500, "something went wrong wihle genreting tokens", error);
