@@ -40,7 +40,7 @@ const userLogin = asyncHandler(async (req, res) => {
     .status(200)
     .cookie("accessToken", accessToken, {
       httpOnly: false, // prevents JavaScript from accessing the cookie
-      secure: true, // ensures the cookie is sent over HTTPS
+      secure: false, // ensures the cookie is sent over HTTPS
       maxAge: 3600000, // sets the cookie expiry (in ms)
     })
     .json(

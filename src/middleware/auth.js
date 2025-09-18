@@ -4,7 +4,7 @@ import {ApiError} from "../utils/ApiError.js"
 import {asyncHandler} from "../utils/asyncHandler.js"
 
 export const verifyJWT = asyncHandler(async (req,_,next)=>{
-        // console.log("my coookie",req.cookies)
+        console.log("my coookie",req.cookies)
     try {
         const token = req.cookies?.accessToken || req.headers["Authorization"]?.replace("Bearer","")
     
